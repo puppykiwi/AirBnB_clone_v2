@@ -1,24 +1,22 @@
-#!/usr/bin/python
-""" holds class City"""
-import models
+#!/usr/bin/python3
+'''
+    Define the class City.
+'''
 from models.base_model import BaseModel, Base
-from os import getenv
-import sqlalchemy
-from sqlalchemy import Column, String, ForeignKey
+from sqlalchemy import String, Column, ForeignKey
 from sqlalchemy.orm import relationship
+import os
 
 
 class City(BaseModel, Base):
-    """Representation of city """
-    if models.storage_t == "db":
-        __tablename__ = 'cities'
+    '''
+        Define the class City that inherits from BaseModel.
+    '''
+    __tablename__ = 'cities'
+    if os.getenv('HBNB_TYPE_STORAGE') == 'db':
         state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
         name = Column(String(128), nullable=False)
-        places = relationship("Place", backref="cities")
+        places = relationship("Place", passive_deletes=True, backref="cities")
     else:
         state_id = ""
         name = ""
-
-    def __init__(self, *args, **kwargs):
-        """initializes city"""
-        super().__init__(*args, **kwargs)
