@@ -48,8 +48,8 @@ class DBStorage:
         objs_dict = {}
         objs = None
         if cls:
-            if type(cls) is str and cls in classes:
-                cls = classes[cls]
+            if type(cls) is str and cls in models.classes:
+                cls = models.classes[cls]
             objs = self.__session.query(cls).all()
         else:
             objs = self.__session.query(User, State, City, Place).all()
