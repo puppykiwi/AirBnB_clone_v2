@@ -13,10 +13,10 @@ def do_pack():
     if path.isdir("versions") is False:
         local("mkdir -p versions")
 
-    if local("tar -cvzf {} web_static".format(file)).failed is True:
-        return None
-    else:
+    if local("tar -cvzf {} web_static".format(file)).failed is False:
         return file
+    else:
+        return None
 
 if __name__ == "__main__":
     do_pack()
