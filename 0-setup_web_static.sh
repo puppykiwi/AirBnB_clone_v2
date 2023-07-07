@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
-# this script will setup our webserver and deploy our code using fabric
-sudo apt update
-sudo apt install nginx -y
+# Sets up a web server for deployment of web_static.
 
-sudo mkdir -p /data/web_static/releases/test/
-sudo mkdir -p /data/web_static/shared/
-sudo chown -R ubuntu:ubuntu /data/
+apt-get update
+apt-get install -y nginx
 
-echo "Holberton School" | sudo tee /data/web_static/releases/test/index.html
+mkdir -p /data/web_static/releases/test/
+mkdir -p /data/web_static/shared/
+echo "Holberton School" > /data/web_static/releases/test/index.html
 ln -sf /data/web_static/releases/test/ /data/web_static/current
 
-echo "server {
+chown -R ubuntu /data/
+chgrp -R ubuntu /data/
+
+printf %s "server {
     listen 80 default_server;
     listen [::]:80 default_server;
     add_header X-Served-By $HOSTNAME;
@@ -27,7 +29,10 @@ echo "server {
     }
 
     error_page 404 /404.html;
-    
-}" | sudo tee /etc/nginx/sites-available/default
+    location /404 {
+      root /var/www/html;
+      internal;
+    }
+}" > /etc/nginx/sites-available/default
 
-sudo service nginx restart
+service nginx restart
