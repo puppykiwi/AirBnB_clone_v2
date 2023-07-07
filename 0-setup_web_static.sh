@@ -7,7 +7,7 @@ sudo mkdir -p /data/web_static/releases/test/
 sudo mkdir -p /data/web_static/shared/
 sudo chown -R ubuntu:ubuntu /data/
 
-echo "Holberton School" > /data/web_static/releases/test/index.html
+echo "Holberton School" | sudo tee /data/web_static/releases/test/index.html
 ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 echo "server {
