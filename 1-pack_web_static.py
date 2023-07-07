@@ -18,4 +18,5 @@ def do_pack():
     else:
         return file
 
-do_pack()
+if __name__ == "__main__":
+    do_pack()
