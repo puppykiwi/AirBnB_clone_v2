@@ -2,11 +2,11 @@
 """a fabfile that generates a .tgz archive from the contents of the web_static folder"""
 
 from fabric.api import *
-from fabric.operations import *
+from fabric.operations import run, put, sudo, local, env
 from datetime import datetime
 from os import path
 
-env.hosts = ['54.173.175.228','52.73.248.17']
+env.hosts = ["54.173.175.228","52.73.248.17"]
 env.user = 'ubuntu'
 env.key_filename = '~/.ssh/school'
 
