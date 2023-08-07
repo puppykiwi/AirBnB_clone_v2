@@ -6,8 +6,9 @@
 # import render_template for rendering templates to browser
 # fetch data from storage engine
 from flask import Flask, render_template
-
-from models.__init__ import storage
+import sys
+sys.path.append("/opt/AirBnB_clone_v2")
+from models import storage
 
 # create an instance called app of the class by passong the __name__ variable
 app = Flask(__name__)
