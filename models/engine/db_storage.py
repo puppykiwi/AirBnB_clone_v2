@@ -13,7 +13,6 @@ from models.review import Review
 import models
 
 
-
 class DBStorage:
     """
     DBStorage class
