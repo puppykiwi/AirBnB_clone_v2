@@ -6,7 +6,7 @@ from __init__ import app
 
 @app.route('/', strict_slashes=False)
 def hello_hbnb():
-    """ Hello HBNB! """
+    """ returns Hello HBNB! to the route / """
     return 'Hello HBNB!'
 
 
