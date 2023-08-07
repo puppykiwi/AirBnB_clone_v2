@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""script that starts a Flask web application"""
+"""Return string when navigating to root dir"""
 from flask import Flask, render_template, g
 import models
 from models.state import State
