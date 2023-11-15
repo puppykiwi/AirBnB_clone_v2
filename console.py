@@ -119,11 +119,11 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-        elif args[0] not in self.classes:
+        elif args[0].capitalize() not in self.classes:
             print("** class doesn't exist **")
             return
         else:
-            cls = self.classes[args[0]]
+            cls = self.classes[args[0].capitalize()]
             obj = cls()
             if len(args) > 1:
                 for i in range(1, len(args)):
